@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ProductCreator {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     public Product[] createTable() {
         System.out.println("Podaj ilość produktów, które należy dodać do sklepu: ");
         int arraySize = scanner.nextInt();

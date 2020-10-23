@@ -3,8 +3,8 @@ import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class PriceCalculator {
-    ProductCreator productCreator = new ProductCreator();
-    Scanner scanner = new Scanner(System.in);
+    private ProductCreator productCreator = new ProductCreator();
+    private Scanner scanner = new Scanner(System.in);
 
     public void calculateSumOfGrossPricesForOneCategory(Product[] products) {
         System.out.println("Podaj nazwę kategorii dla której obliczyć sumę cen brutto: ");
@@ -12,10 +12,10 @@ public class PriceCalculator {
         System.out.println("2 - alkohol");
         System.out.println("3 - słodycze");
         int option = scanner.nextInt();
-        String actualCategory = productCreator.chooseCategory(option).getName();
+        Category actualCategory = productCreator.chooseCategory(option);
         double sum = 0;
         for(Product product : products){
-            if(product.getCategory().getName().equals(actualCategory)) {
+            if(product.getCategory().equals(actualCategory)) {
                 sum += calculateGrossPrice(product);
             }
         }
