@@ -1,7 +1,8 @@
 public enum Category {
     LEKI("Leki", 0.08),
     ALKOHOL("Alkohol", 0.23),
-    SLODYCZE("Słodycze", 0.23);
+    SLODYCZE("Słodycze", 0.23),
+    NONE(null, 0);
 
     private String name;
     private double vat;

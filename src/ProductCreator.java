@@ -37,7 +37,7 @@ public class ProductCreator {
             case 1 -> Category.LEKI;
             case 2 -> Category.ALKOHOL;
             case 3 -> Category.SLODYCZE;
-            default -> null;
+            default -> Category.NONE;
         };
     }
 }
