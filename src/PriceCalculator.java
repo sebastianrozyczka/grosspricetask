@@ -1,17 +1,29 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Scanner;
 
 public class PriceCalculator {
-    public void calculateGrossPrice(Product product) {
-        switch (product.getCategory().getName()){
-            case "Leki":
-                System.out.println("Cena brutto produktu z kategorii leki: " + product.getName()
-                        + " to: " + roundPrice(product.getNetPrice() * (product.getCategory().getVat() + 1)));
-                break;
-            case "Alkohol":
-                System.out.println("Cena brutto produktu z kategorii alkohol: " + product.getName()
-                        + " to: " +  roundPrice(product.getNetPrice() * (product.getCategory().getVat() + 1)));
+    ProductCreator productCreator = new ProductCreator();
+    Scanner scanner = new Scanner(System.in);
+
+    public void calculateSumOfGrossPricesForOneCategory(Product[] products) {
+        System.out.println("Podaj nazwę kategorii dla której obliczyć sumę cen brutto: ");
+        System.out.println("1 - leki");
+        System.out.println("2 - alkohol");
+        System.out.println("3 - słodycze");
+        int option = scanner.nextInt();
+        String actualCategory = productCreator.chooseCategory(option).getName();
+        double sum = 0;
+        for(Product product : products){
+            if(product.getCategory().getName().equals(actualCategory)) {
+                sum += calculateGrossPrice(product);
+            }
         }
+        System.out.println(sum);
+    }
+
+    private double calculateGrossPrice(Product product) {
+        return roundPrice(product.getNetPrice() * (product.getCategory().getVat() + 1));
     }
 
     private double roundPrice(double number) {
